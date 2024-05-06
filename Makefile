@@ -19,7 +19,10 @@ RA_TYPE ?= none
 RA_CLIENT_SPID ?=
 RA_CLIENT_LINKABLE ?= 0
 
-python.manifest: python.manifest.template
+hello_c: scripts/hello.c
+	gcc -o scripts/hello scripts/hello.c
+
+python.manifest: python.manifest.template hello_c
 	gramine-manifest \
 		-Dlog_level=$(GRAMINE_LOG_LEVEL) \
 		-Darch_libdir=$(ARCH_LIBDIR) \
